@@ -15,18 +15,13 @@ namespace ConsoleApp1
             Slowo word = new Slowo();
 
 
-           //// for(int i=0; i<10; i++)
-           // {
-           //    // if (word.licznikTrafionych < word.haslo.Length)
-           //     {
+           
                     word.wezHaslo();
                     word.rysujHaslo();
                     //word.PodajLitere();
                     word.sprawdz(word.literka, word.haslo);
                     word.sprawdzGameOver();
-    //    }
-    //}
-
+   
     Console.ReadKey();
         }
     }

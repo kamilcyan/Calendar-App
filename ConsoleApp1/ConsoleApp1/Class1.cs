@@ -11,6 +11,7 @@ namespace ConsoleApp1
         public string haslo="rower";
         public char literka;
         public int licznikTrafionych = 0;
+        
 
         public string wezHaslo()
         {
@@ -22,7 +23,7 @@ namespace ConsoleApp1
         {
             for(int i=0; i<haslo.Length; i++)
             {
-                Console.Write("_ ");
+               string haslo1[i]="_";
             }
         }
         
