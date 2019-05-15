@@ -7,7 +7,7 @@ struct Rosliny
     string nazwa;
     Rosliny *next;
 };
-int wybor;
+
 
 int rysujMenu()
 {
@@ -22,13 +22,16 @@ int rysujMenu()
     return wybor;
 }
 
-void Dodaj(Rosliny *&glowa)
+
+Rosliny *Dodaj(Rosliny *&glowa)
 {
+
     Rosliny *aktualny, *poprzedni;
-    poprzedni = aktualny;
+
 
 
     aktualny = new Rosliny;
+    poprzedni = aktualny;
     string nazwa;
     cout << "Podaj nazwe:" << endl;
     cin >> nazwa;
@@ -36,12 +39,12 @@ void Dodaj(Rosliny *&glowa)
 
     aktualny->nazwa = nazwa;
     aktualny->next = NULL;
-    if (poprzedni != NULL)
-        poprzedni->next = aktualny;
-    else
-        glowa = aktualny;
-
-
+   f(poprzedni = null)
+        return poprzednni;
+    while(poprzedni -> next != null)
+        poprzedni = poprzeddni -> next;
+    poprzedni ->next = nastepny;
+    return glowa;
 }
 
 void Usun(Rosliny *&glowa)
@@ -64,23 +67,22 @@ int main()
 {
 
     Rosliny *glowa;
-
     glowa = NULL;
 
     int wybor=1;
-    while(wybor!=0)
+    while(true)
     {
         wybor =rysujMenu();
         switch(wybor)
         {
         case 1:
-            Dodaj(glowa);
+            glowa = Dodaj(glowa);
             break;
         case 2:
             Usun(glowa);
             break;
         case 3:
-            Rysuj(glowa);
+            Rysuj(&glowa);
             break;
         default:
             return 0;
