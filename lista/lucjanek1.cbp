@@ -3,6 +3,7 @@
 	<FileVersion major="1" minor="6" />
 	<Project>
 		<Option title="lucjanek1" />
+		<Option execution_dir="D:/projekty C++/prooj/lucjanek1/" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
@@ -32,7 +33,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="../../../projekty C++/prooj/lucjanek1/main.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
