@@ -49,9 +49,15 @@ void Usun(Rosliny *&glowa)
 
 }
 
-void Rysuj()
+void Rysuj(Rosliny *&glowa)
 {
+    Rosliny *adres;
+    adres = glowa;
 
+    while(adres){
+        cout << adres->nazwa << endl;
+        adres = adres->next
+    }
 }
 
 int main()
@@ -62,7 +68,7 @@ int main()
     glowa = NULL;
 
     int wybor=1;
-    while(wybor)
+    while(wybor!=0)
     {
         wybor =rysujMenu();
         switch(wybor)
@@ -74,11 +80,12 @@ int main()
             Usun(glowa);
             break;
         case 3:
-            Rysuj();
+            Rysuj(glowa);
             break;
         default:
             return 0;
         }
+
     }
 
     return 0;
