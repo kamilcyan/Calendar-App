@@ -23,14 +23,16 @@ int rysujMenu()
     return wybor;
 }
 
-void dodajWiele(Rosliny *&glowa)
+Rosliny* dodajWiele(Rosliny *&glowa)
 {
+    Rosliny* Dodaj(Rosliny *&glowa);
     int n;
     cout << "Podaj ilosc wyrazow do wczytania: " << endl;
     cin >> n;
     for(int i=0; i<n; i++){
-        glowa = Rosliny* Dodaj(glowa);
+        glowa = Dodaj(glowa);
     }
+    return glowa;
 }
 
 Rosliny* Dodaj(Rosliny *&glowa)
