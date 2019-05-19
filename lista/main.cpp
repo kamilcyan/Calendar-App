@@ -79,20 +79,35 @@ void Usun(Rosliny *&glowa)
   co->next = tmp;
 }*/
 
-void Rysuj(Rosliny* *&gdzie)
+void wybierzWyraz(Rosliny *&glowa)
+{
+    string gdzie;
+    Rosliny* Rysuj(Rosliny *&glowa);
+
+    cout << "Który element chcesz wyœwietlic?" << endl;
+
+    while(glowa != NULL){
+        cout << glowa->nazwa << "\t";
+        glowa = glowa->next;
+    }
+    cin >> gdzie;
+    //Rysuj(gdzie);
+}
+
+Rysuj(Rosliny* *&gdzie)
 {
     Rosliny *tmp;
 
 
-    tmp = *gdzie;
+    //tmp = *gdzie;
 
     //gdzie->next = co;
 
     //co->next = tmp;
 
-    while(gdzie != NULL){
-        cout << gdzie->nazwa << endl;
-        gdzie = gdzie->next;
+    while(tmp != NULL){
+        cout << tmp->nazwa << endl;
+        tmp = tmp->next;
     }
 }
 
@@ -116,7 +131,7 @@ int main()
             Usun(glowa);
             break;
         case 3:
-            void Rysuj(pozycja);
+            wybierzWyraz(glowa);
             break;
         default:
             return 0;
