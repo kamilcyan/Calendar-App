@@ -52,17 +52,17 @@ Rosliny* Dodaj(Rosliny *&glowa)
     aktualny->next = NULL;
 
 if(poprzedni == NULL)
-{
-    glowa = aktualny;
+    {
+        glowa = aktualny;
+        return glowa;
+    }
+    while(poprzedni -> next != NULL)
+    poprzedni = poprzedni -> next;
+    poprzedni ->next = aktualny;
     return glowa;
 }
-while(poprzedni -> next != NULL)
-poprzedni = poprzedni -> next;
-poprzedni ->next = aktualny;
-return glowa;
-}
 
-void Usun(Rosliny *&glowa)
+Rosliny* Usun(Rosliny *&glowa)
 {
 
 }
@@ -79,22 +79,7 @@ void Usun(Rosliny *&glowa)
   co->next = tmp;
 }*/
 
-void wybierzWyraz(Rosliny *&glowa)
-{
-    string gdzie;
-    Rosliny* Rysuj(Rosliny *&glowa);
-
-    cout << "Który element chcesz wyœwietlic?" << endl;
-
-    while(glowa != NULL){
-        cout << glowa->nazwa << "\t";
-        glowa = glowa->next;
-    }
-    cin >> gdzie;
-    //Rysuj(gdzie);
-}
-
-Rysuj(Rosliny* *&gdzie)
+Rosliny* Rysuj(gdzie)
 {
     Rosliny *tmp;
 
@@ -109,7 +94,24 @@ Rysuj(Rosliny* *&gdzie)
         cout << tmp->nazwa << endl;
         tmp = tmp->next;
     }
+
 }
+Rosliny* wybierzWyraz(Rosliny *&glowa)
+{
+    string gdzie;
+    Rosliny* Rysuj(Rosliny *&glowa);
+
+    cout << "Który element chcesz wyœwietlic?" << endl;
+
+    while(glowa != NULL){
+        cout << glowa->nazwa << "\t";
+        glowa = glowa->next;
+    }
+    cin >> gdzie;
+    Rysuj(gdzie);
+}
+
+
 
 int main()
 {
