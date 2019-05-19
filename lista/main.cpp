@@ -67,14 +67,32 @@ void Usun(Rosliny *&glowa)
 
 }
 
-void Rysuj(Rosliny *&glowa)
+/*Rosliny* wstawGdzie(Rosliny* *&gdzie, Rosliny *&co)
 {
-    Rosliny *adres;
-    adres = glowa;
+  Rosliny *tmp;
 
-    while(adres != NULL){
-        cout << adres->nazwa << endl;
-        adres = adres->next;
+
+  tmp = gdzie->next;
+
+  gdzie->next = co;
+
+  co->next = tmp;
+}*/
+
+void Rysuj(Rosliny* *&gdzie)
+{
+    Rosliny *tmp;
+
+
+    tmp = *gdzie;
+
+    //gdzie->next = co;
+
+    //co->next = tmp;
+
+    while(gdzie != NULL){
+        cout << gdzie->nazwa << endl;
+        gdzie = gdzie->next;
     }
 }
 
@@ -98,7 +116,7 @@ int main()
             Usun(glowa);
             break;
         case 3:
-            Rysuj(glowa);
+            void Rysuj(pozycja);
             break;
         default:
             return 0;
