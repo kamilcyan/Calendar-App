@@ -6,6 +6,8 @@ class Rosliny
 {
     public:
     string nazwa;
+    int wiek;
+    double cena;
     Rosliny *next;
 };
 
@@ -34,7 +36,7 @@ Rosliny* dodajWiele(Rosliny *&glowa)
     int n;
     cout << "Podaj ilosc wyrazow do wczytania: " << endl;
     cin >> n;
-    for(int i=0; i<n; i++){
+    for(int i=1; i<n; i++){
         glowa = Dodaj(glowa);
     }
     return glowa;
@@ -49,11 +51,18 @@ Rosliny* Dodaj(Rosliny *&glowa)
 
     aktualny = new Rosliny();
     string nazwa;
+    int wiek;
+    double cena;
     cout << "Podaj nazwe:" << endl;
     cin >> nazwa;
-
+    cout << "Podaj wiek:" << endl;
+    cin >> wiek;
+    cout << "Podaj cene:" << endl;
+    cin >> cena;
 
     aktualny->nazwa = nazwa;
+    aktualny->cena = cena;
+    aktualny->wiek = wiek;
     aktualny->next = NULL;
 
     if(poprzedni == NULL)
@@ -74,7 +83,7 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
     cin >> wyraz;
     Rosliny *tu = glowa;
     //Rosliny *tu;
-    tu = nullptr;
+
     while(tu != nullptr)
     {
     tu = tu -> next;
@@ -90,7 +99,7 @@ Rosliny* Rysuj(Rosliny *&tu)
 
 
     while(kursor != NULL){
-        cout << kursor->nazwa << endl;
+        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << endl;
         kursor = kursor->next;
     }
 
