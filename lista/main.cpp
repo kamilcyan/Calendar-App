@@ -20,10 +20,10 @@ int main()
     Rosliny *glowa;
     glowa = NULL;
 
-    Rosliny* dodajWiele(glowa);
-    Rosliny* Dodaj(glowa);
-    Rosliny* wybierzWyraz(glowa);
-    Rosliny* Rysuj(glowa);
+    dodajWiele(glowa);
+    Dodaj(glowa);
+    wybierzWyraz(glowa);
+    Rysuj(glowa);
 
     return 0;
 }
@@ -74,12 +74,12 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
     cin >> wyraz;
     Rosliny *gdzie = glowa;
     Rosliny *tu;
-    tu = new Rosliny;
+    tu = nullptr;
     while(gdzie != nullptr)
     {
     gdzie = gdzie -> next;
     if(gdzie->nazwa == wyraz)
-        gdzie = tu;
+        tu = gdzie;
     Rysuj(tu);
     }
 
@@ -87,10 +87,7 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
 
 Rosliny* Rysuj(Rosliny *&tu)
 {
-    Rosliny *kursor = new Rosliny;
-
-
-    kursor = tu;
+    Rosliny *kursor = tu;
 
 
     while(kursor != NULL){
