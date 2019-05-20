@@ -9,18 +9,23 @@ class Rosliny
     Rosliny *next;
 };
 
+Rosliny* dodajWiele(Rosliny *&glowa);
+Rosliny* Dodaj(Rosliny *&glowa);
+Rosliny* wybierzWyraz(Rosliny *&glowa);
 
-int rysujMenu()
+
+int main()
 {
-    int wybor;
-    cout << "Baza danych roslin:" << endl;
-    cout << "Wybierz opcje:" << endl;
-    cout << "Dodaj  rosline\t1" << endl;
-    cout << "Skasuj  rosline\t2" << endl;
-    cout << "Pokaz liste\t3" << endl;
-    cout << "Wyjdz\t0" << endl;
-    cin >> wybor;
-    return wybor;
+
+    Rosliny *glowa;
+    glowa = NULL;
+
+    Rosliny* dodajWiele(Rosliny *&glowa);
+    Rosliny* Dodaj(Rosliny *&glowa);
+    Rosliny* wybierzWyraz(Rosliny *&glowa);
+    Rosliny* Rysuj(Rosliny *&glowa);
+
+    return 0;
 }
 
 Rosliny* dodajWiele(Rosliny *&glowa)
@@ -51,33 +56,34 @@ Rosliny* Dodaj(Rosliny *&glowa)
     aktualny->nazwa = nazwa;
     aktualny->next = NULL;
 
-if(poprzedni == NULL)
-    {
-        glowa = aktualny;
-        return glowa;
-    }
+    if(poprzedni == NULL)
+        {
+            glowa = aktualny;
+            return glowa;
+        }
     while(poprzedni -> next != NULL)
     poprzedni = poprzedni -> next;
     poprzedni ->next = aktualny;
     return glowa;
 }
 
-Rosliny* Usun(Rosliny *&glowa)
+Rosliny* wybierzWyraz(Rosliny *&glowa)
 {
+    string wyraz;
+    cout << "Podaj nazwe wyrazu od ktorego chcesz wydrukowac: " << endl;
+    cin >> wyraz;
+    Rosliny *gdzie = glowa;
+    Rosliny *tu;
+    tu = new Rosliny;
+    while(gdzie != nullptr)
+    {
+    gdzie = gdzie -> next;
+    if(gdzie->nazwa == wyraz)
+        gdzie = tu;
+    Rysuj(tu);
+    }
 
 }
-
-/*Rosliny* wstawGdzie(Rosliny* *&gdzie, Rosliny *&co)
-{
-  Rosliny *tmp;
-
-
-  tmp = gdzie->next;
-
-  gdzie->next = co;
-
-  co->next = tmp;
-}*/
 
 Rosliny* Rysuj(Rosliny *&glowa)
 {
@@ -92,52 +98,4 @@ Rosliny* Rysuj(Rosliny *&glowa)
         tmp = tmp->next;
     }
 
-}
-Rosliny* wybierzWyraz(Rosliny *&glowa)
-{
-    string wyraz;
-    cout << "Podaj nazwe wyrazu od ktorego chcesz wydrukowac: " << endl;
-    cin >> wyraz;
-    Rosliny *gdzie = glowa;
-    int i=0;
-    while(gdzie != nullptr)
-    {
-    gdzie = gdzie -> next;
-    i++;
-    if(gdzie->next == wyraz)
-    Rysuj(wyraz);
-    }
-
-}
-
-
-
-int main()
-{
-
-    Rosliny *glowa;
-
-    glowa = NULL;
-
-    int wybor=1;
-    while(wybor)
-    {
-        wybor =rysujMenu();
-        switch(wybor)
-        {
-        case 1:
-            dodajWiele(glowa);
-            break;
-        case 2:
-            Usun(glowa);
-            break;
-        case 3:
-            wybierzWyraz(glowa);
-            break;
-        default:
-            return 0;
-        }
-    }
-
-    return 0;
 }
