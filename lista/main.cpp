@@ -8,10 +8,10 @@ class Rosliny
     string nazwa;
     int wiek;
     double cena;
+    int lp; //liczba porzadkowa
     Rosliny *next;
 };
 
-int ileRoslin();
 Rosliny* dodajWiele(Rosliny *&glowa);
 Rosliny* Dodaj(Rosliny *&glowa);
 Rosliny* wybierzWyraz(Rosliny *&glowa);
@@ -25,29 +25,23 @@ int main()
     Rosliny *glowa;
     glowa = NULL;
 
-    ileRoslin();
     dodajWiele(glowa);
     Dodaj(glowa);
     wybierzWyraz(glowa);
-    wybierzUsuwanie(glowa);
+    //wybierzUsuwanie(glowa);
 
     return 0;
 }
 
-int ileRoslin()
+Rosliny* dodajWiele(Rosliny *&glowa)
 {
     int n;
     cout << "Podaj ilosc wyrazow do wczytania: " << endl;
     cin >> n;
-    return n;
-}
-
-Rosliny* dodajWiele(Rosliny *&glowa)
-{
-    int n = ileRoslin();
     for(int i=1; i<n; i++){
         glowa = Dodaj(glowa);
     }
+    return glowa;
 }
 
 Rosliny* Dodaj(Rosliny *&glowa)
@@ -67,11 +61,13 @@ Rosliny* Dodaj(Rosliny *&glowa)
     cin >> wiek;
     cout << "Podaj cene:" << endl;
     cin >> cena;
+    aktualny->lp=0;
 
     aktualny->nazwa = nazwa;
     aktualny->cena = cena;
     aktualny->wiek = wiek;
     aktualny->next = NULL;
+    aktualny->lp++;
 
     if(poprzedni == NULL)
         {
@@ -109,12 +105,12 @@ Rosliny* Rysuj(Rosliny *&tu)
 
     while(kursor != NULL)
     {
-        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << endl;
+        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" <<  endl;
         kursor = kursor->next;
     }
-    cout << ileRoslin();
-}
 
+}
+/*
 Rosliny* wybierzUsuwanie(Rosliny *&glowa)
 {
     string tuUsuwania;
@@ -134,7 +130,7 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
 
 Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
 {
-  /*  Rosliny *kursor = glowa;
+    Rosliny *kursor = glowa;
 
     while(kursor -> next != mUsuwania)
     {
@@ -162,5 +158,5 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
     {
 
     }
-*/
-}
+
+}*/
