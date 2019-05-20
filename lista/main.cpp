@@ -93,9 +93,9 @@ Rosliny* Rysuj(Rosliny *&tu)
     kursor = tu;
 
 
-    while(tu != NULL){
-        cout << tu->nazwa << endl;
-        tu = tu->next;
+    while(kursor != NULL){
+        cout << kursor->nazwa << endl;
+        kursor = kursor->next;
     }
 
 }
