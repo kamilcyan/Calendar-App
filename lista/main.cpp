@@ -11,12 +11,13 @@ class Rosliny
     Rosliny *next;
 };
 
+int ileRoslin();
 Rosliny* dodajWiele(Rosliny *&glowa);
 Rosliny* Dodaj(Rosliny *&glowa);
 Rosliny* wybierzWyraz(Rosliny *&glowa);
 Rosliny* Rysuj(Rosliny *&glowa);
 Rosliny* wybierzUsuwanie(Rosliny *&glowa);
-Rosliny* Usun(Rosliny *&glowa);
+Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa);
 
 int main()
 {
@@ -24,6 +25,7 @@ int main()
     Rosliny *glowa;
     glowa = NULL;
 
+    ileRoslin();
     dodajWiele(glowa);
     Dodaj(glowa);
     wybierzWyraz(glowa);
@@ -32,16 +34,20 @@ int main()
     return 0;
 }
 
-Rosliny* dodajWiele(Rosliny *&glowa)
+int ileRoslin()
 {
-    Rosliny* Dodaj(Rosliny *&glowa);
     int n;
     cout << "Podaj ilosc wyrazow do wczytania: " << endl;
     cin >> n;
+    return n;
+}
+
+Rosliny* dodajWiele(Rosliny *&glowa)
+{
+    int n = ileRoslin();
     for(int i=1; i<n; i++){
         glowa = Dodaj(glowa);
     }
-    return glowa;
 }
 
 Rosliny* Dodaj(Rosliny *&glowa)
@@ -106,7 +112,7 @@ Rosliny* Rysuj(Rosliny *&tu)
         cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << endl;
         kursor = kursor->next;
     }
-
+    cout << ileRoslin();
 }
 
 Rosliny* wybierzUsuwanie(Rosliny *&glowa)
@@ -115,21 +121,33 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
     cout << "Podaj miejsce usuwania:" << endl;
     cin >> tuUsuwania;
 
-    Rosliny *mUsuwania = glowa;
+    Rosliny *mUsuwania = glowa; //miejsce w ktorym zaczynamy usuwac
     while(mUsuwania != nullptr)
     {
     mUsuwania = mUsuwania -> next;
     if(mUsuwania->nazwa == tuUsuwania)
         {
-            Usun(mUsuwania);
+            Usun(mUsuwania, glowa);
         }
     }
 }
 
-Rosliny* Usun(Rosliny *&mUsuwania)
+Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
 {
-    Rosliny *kursor = mUsuwania;
-    Rosliny* nastepny = kursor->next;
+  /*  Rosliny *kursor = glowa;
+
+    while(kursor -> next != mUsuwania)
+    {
+        kursor = kursor -> next;
+    }
+    while(mUsuwania != nullptr)
+    {
+        if(mUsuwania->wiek > kursor->wiek && parzyste)
+        {
+            usun ten elelemnt
+        }
+    }*/
+    /*Rosliny* nastepny = kursor->next;
     int licznikStarszych = 0;
 
     while(kursor != NULL)
@@ -137,11 +155,12 @@ Rosliny* Usun(Rosliny *&mUsuwania)
         if(kursor->wiek > kursor->next->wiek)
         {
             licznikStarszych++;
+            kursor = kursor->next;
         }
     }
     if((kursor->wiek > nastepny->wiek)||licznikStarszych%2==0)
     {
 
     }
-
+*/
 }
