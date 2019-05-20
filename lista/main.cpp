@@ -79,16 +79,13 @@ Rosliny* Usun(Rosliny *&glowa)
   co->next = tmp;
 }*/
 
-Rosliny* Rysuj(gdzie)
+Rosliny* Rysuj(Rosliny *&glowa)
 {
-    Rosliny *tmp;
+    Rosliny *kursor = new Rosliny;
 
 
-    //tmp = *gdzie;
+    kursor = glowa;
 
-    //gdzie->next = co;
-
-    //co->next = tmp;
 
     while(tmp != NULL){
         cout << tmp->nazwa << endl;
@@ -98,17 +95,19 @@ Rosliny* Rysuj(gdzie)
 }
 Rosliny* wybierzWyraz(Rosliny *&glowa)
 {
-    string gdzie;
-    Rosliny* Rysuj(Rosliny *&glowa);
-
-    cout << "Który element chcesz wyœwietlic?" << endl;
-
-    while(glowa != NULL){
-        cout << glowa->nazwa << "\t";
-        glowa = glowa->next;
+    string wyraz;
+    cout << "Podaj nazwe wyrazu od ktorego chcesz wydrukowac: " << endl;
+    cin >> wyraz;
+    Rosliny *gdzie = glowa;
+    int i=0;
+    while(gdzie != nullptr)
+    {
+    gdzie = gdzie -> next;
+    i++;
+    if(gdzie->next == wyraz)
+    Rysuj(wyraz);
     }
-    cin >> gdzie;
-    Rysuj(gdzie);
+
 }
 
 
