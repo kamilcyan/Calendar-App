@@ -12,7 +12,7 @@ class Rosliny
 Rosliny* dodajWiele(Rosliny *&glowa);
 Rosliny* Dodaj(Rosliny *&glowa);
 Rosliny* wybierzWyraz(Rosliny *&glowa);
-
+Rosliny* Rysuj(Rosliny *&glowa);
 
 int main()
 {
@@ -85,17 +85,17 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
 
 }
 
-Rosliny* Rysuj(Rosliny *&glowa)
+Rosliny* Rysuj(Rosliny *&tu)
 {
     Rosliny *kursor = new Rosliny;
 
 
-    kursor = glowa;
+    kursor = tu;
 
 
-    while(tmp != NULL){
-        cout << tmp->nazwa << endl;
-        tmp = tmp->next;
+    while(tu != NULL){
+        cout << tu->nazwa << endl;
+        tu = tu->next;
     }
 
 }
