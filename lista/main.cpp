@@ -20,10 +20,10 @@ int main()
     Rosliny *glowa;
     glowa = NULL;
 
-    Rosliny* dodajWiele(Rosliny *&glowa);
-    Rosliny* Dodaj(Rosliny *&glowa);
-    Rosliny* wybierzWyraz(Rosliny *&glowa);
-    Rosliny* Rysuj(Rosliny *&glowa);
+    Rosliny* dodajWiele(glowa);
+    Rosliny* Dodaj(glowa);
+    Rosliny* wybierzWyraz(glowa);
+    Rosliny* Rysuj(glowa);
 
     return 0;
 }
