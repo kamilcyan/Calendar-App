@@ -72,14 +72,13 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
     string wyraz;
     cout << "Podaj nazwe wyrazu od ktorego chcesz wydrukowac: " << endl;
     cin >> wyraz;
-    Rosliny *gdzie = glowa;
-    Rosliny *tu;
+    Rosliny *tu = glowa;
+    //Rosliny *tu;
     tu = nullptr;
-    while(gdzie != nullptr)
+    while(tu != nullptr)
     {
-    gdzie = gdzie -> next;
-    if(gdzie->nazwa == wyraz)
-        tu = gdzie;
+    tu = tu -> next;
+    if(tu->nazwa == wyraz)
     Rysuj(tu);
     }
 
