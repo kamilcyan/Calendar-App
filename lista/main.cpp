@@ -28,7 +28,7 @@ int main()
     dodajWiele(glowa);
     Dodaj(glowa, ile);
     wybierzWyraz(glowa);
-    //wybierzUsuwanie(glowa);
+    wybierzUsuwanie(glowa);
 
     return 0;
 }
@@ -129,10 +129,14 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
     Rosliny *mUsuwania = glowa; //miejsce w ktorym zaczynamy usuwac
     while(mUsuwania != nullptr)
     {
-    mUsuwania = mUsuwania -> next;
+
     if(mUsuwania->nazwa == tuUsuwania)
         {
             Usun(mUsuwania, glowa);
+        }
+    else
+        {
+            mUsuwania = mUsuwania -> next;
         }
     }
 }
@@ -140,18 +144,43 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
 Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
 {
     Rosliny *kursor = glowa;
+    Rosliny *poprzedni = nullptr;
+
+    Rosliny *tmp = nullptr;
 
     while(kursor -> next != mUsuwania)
     {
         kursor = kursor -> next;
-    }
+
     while(mUsuwania != nullptr)
     {
+        //Rosliny *aktualny = glowa;
         if(mUsuwania->wiek > kursor->wiek && (kursor->id)%2==0)
         {
-            usun ten elelemnt
+            if(mUsuwania==glowa)
+            {
+                glowa = glowa->next;
+            }
+
+            else
+            {
+                poprzedni->next = mUsuwania->next;
+                tmp = mUsuwania;
+                mUsuwania = mUsuwania->next;
+                delete tmp;
+            }
+          while(mUsuwania != NULL)
+            {
+                cout << "Nazwa:\t" << mUsuwania->nazwa << "\t" << "Wiek:\t" << mUsuwania->wiek << "\t" << "Cena:\t" << mUsuwania->cena << "\t" << mUsuwania->id << endl;
+                mUsuwania = mUsuwania->next;
+            }
         }
+
     }
+    }
+}
+
+
     /*Rosliny* nastepny = kursor->next;
     int licznikStarszych = 0;
 
