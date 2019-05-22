@@ -8,12 +8,12 @@ class Rosliny
     string nazwa;
     int wiek;
     double cena;
-    int lp; //liczba porzadkowa
+    int id;//liczba porzadkowa
     Rosliny *next;
 };
 
 Rosliny* dodajWiele(Rosliny *&glowa);
-Rosliny* Dodaj(Rosliny *&glowa);
+Rosliny* Dodaj(Rosliny *&glowa, int ile);
 Rosliny* wybierzWyraz(Rosliny *&glowa);
 Rosliny* Rysuj(Rosliny *&glowa);
 Rosliny* wybierzUsuwanie(Rosliny *&glowa);
@@ -21,12 +21,12 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa);
 
 int main()
 {
-
     Rosliny *glowa;
     glowa = NULL;
+    int ile;
 
     dodajWiele(glowa);
-    Dodaj(glowa);
+    Dodaj(glowa, ile);
     wybierzWyraz(glowa);
     //wybierzUsuwanie(glowa);
 
@@ -36,15 +36,19 @@ int main()
 Rosliny* dodajWiele(Rosliny *&glowa)
 {
     int n;
+    int ile = 0;
     cout << "Podaj ilosc wyrazow do wczytania: " << endl;
     cin >> n;
-    for(int i=1; i<n; i++){
-        glowa = Dodaj(glowa);
+    for(int i=1; i<n; i++)
+    {
+        ile++; //liczy ilosc powtorzen
+        glowa = Dodaj(glowa, ile);
     }
     return glowa;
 }
 
-Rosliny* Dodaj(Rosliny *&glowa)
+
+Rosliny* Dodaj(Rosliny *&glowa, int ile)
 {
     Rosliny *aktualny, *poprzedni;
     poprzedni = glowa;
@@ -61,13 +65,15 @@ Rosliny* Dodaj(Rosliny *&glowa)
     cin >> wiek;
     cout << "Podaj cene:" << endl;
     cin >> cena;
-    aktualny->lp=0;
+
+
 
     aktualny->nazwa = nazwa;
     aktualny->cena = cena;
     aktualny->wiek = wiek;
     aktualny->next = NULL;
-    aktualny->lp++;
+    aktualny->id = ile;
+
 
     if(poprzedni == NULL)
         {
@@ -80,6 +86,8 @@ Rosliny* Dodaj(Rosliny *&glowa)
     return glowa;
 }
 
+
+
 Rosliny* wybierzWyraz(Rosliny *&glowa)
 {
     string wyraz;
@@ -88,13 +96,14 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
     Rosliny *tu = glowa;
 
 
-    while(tu != nullptr)
+    while(tu != NULL)
     {
-        tu = tu -> next;
+
         if(tu->nazwa == wyraz)
         {
             Rysuj(tu);
         }
+        tu = tu -> next;
     }
 }
 
@@ -105,12 +114,12 @@ Rosliny* Rysuj(Rosliny *&tu)
 
     while(kursor != NULL)
     {
-        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" <<  endl;
+        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" << kursor->id << endl;
         kursor = kursor->next;
     }
 
 }
-/*
+
 Rosliny* wybierzUsuwanie(Rosliny *&glowa)
 {
     string tuUsuwania;
@@ -138,11 +147,11 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
     }
     while(mUsuwania != nullptr)
     {
-        if(mUsuwania->wiek > kursor->wiek && parzyste)
+        if(mUsuwania->wiek > kursor->wiek && (kursor->id)%2==0)
         {
             usun ten elelemnt
         }
-    }*/
+    }
     /*Rosliny* nastepny = kursor->next;
     int licznikStarszych = 0;
 
@@ -160,3 +169,5 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
     }
 
 }*/
+
+
