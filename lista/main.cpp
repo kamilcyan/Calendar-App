@@ -8,12 +8,11 @@ class Rosliny
     string nazwa;
     int wiek;
     double cena;
-    int id;//liczba porzadkowa
     Rosliny *next;
 };
 
 Rosliny* dodajWiele(Rosliny *&glowa);
-Rosliny* Dodaj(Rosliny *&glowa, int ile);
+Rosliny* Dodaj(Rosliny *&glowa);
 Rosliny* wybierzWyraz(Rosliny *&glowa);
 Rosliny* Rysuj(Rosliny *&glowa);
 Rosliny* wybierzUsuwanie(Rosliny *&glowa);
@@ -26,7 +25,7 @@ int main()
     int ile;
 
     dodajWiele(glowa);
-    Dodaj(glowa, ile);
+    Dodaj(glowa);
     wybierzWyraz(glowa);
     wybierzUsuwanie(glowa);
 
@@ -41,14 +40,13 @@ Rosliny* dodajWiele(Rosliny *&glowa)
     cin >> n;
     for(int i=1; i<n; i++)
     {
-        ile++; //liczy ilosc powtorzen
-        glowa = Dodaj(glowa, ile);
+        glowa = Dodaj(glowa);
     }
     return glowa;
 }
 
 
-Rosliny* Dodaj(Rosliny *&glowa, int ile)
+Rosliny* Dodaj(Rosliny *&glowa)
 {
     Rosliny *aktualny, *poprzedni;
     poprzedni = glowa;
@@ -72,7 +70,6 @@ Rosliny* Dodaj(Rosliny *&glowa, int ile)
     aktualny->cena = cena;
     aktualny->wiek = wiek;
     aktualny->next = NULL;
-    aktualny->id = ile;
 
 
     if(poprzedni == NULL)
@@ -114,7 +111,7 @@ Rosliny* Rysuj(Rosliny *&tu)
 
     while(kursor != NULL)
     {
-        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" << kursor->id << endl;
+        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" << endl;
         kursor = kursor->next;
     }
 
@@ -125,29 +122,55 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
     string tuUsuwania;
     cout << "Podaj miejsce usuwania:" << endl;
     cin >> tuUsuwania;
-
+    int counter = 0;
     Rosliny *mUsuwania = glowa; //miejsce w ktorym zaczynamy usuwac
-    while(mUsuwania != nullptr)
+    int wiekPoprzedniego = -1;
+while(mUsuwania != nullptr)
     {
 
-    if(mUsuwania->nazwa == tuUsuwania)
+    if(mUsuwania-> next ->nazwa == tuUsuwania)
         {
-            Usun(mUsuwania, glowa);
+        wiekPoprzedniego = mUsuwania -> wiek;
         }
+    else if (mUsuwania-> nazwa == tuUsuwania)
+    {
+    break;
+    }
     else
         {
             mUsuwania = mUsuwania -> next;
         }
     }
+while(mUsuwania != nullptr)
+{
+if(mUsuwania -> wiek > wiekPoprzedniego )
+{
+    if(counter% 2 == 0)
+    {
+        Usun(mUsuwania, glowa);
+    }
+    else
+    {
+        mUsuwania = mUsuwania -> next;
+    }
+    counter++;
 }
+else
+{
+    mUsuwania = mUsuwania -> next;
+}
+}
+}
+
 
 Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
 {
     if(mUsuwania == glowa)
     {
-    glowa = glowa -> next;
+        glowa = glowa -> next;
     }
-    else{
+    else
+    {
         Rosliny *kursor = glowa;
 
         while(kursor -> next != mUsuwania)
@@ -155,14 +178,10 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
             kursor = kursor -> next;
         }
         kursor -> next = mUsuwania -> next;
-        }
+    }
     delete(mUsuwania);
 
     Rysuj(glowa);
 
     return glowa;
 }
-
-
-
-
