@@ -159,15 +159,15 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
         {
             if(mUsuwania==glowa)
             {
+                tmp = glowa;
                 glowa = glowa->next;
+                delete tmp;
             }
 
             else
             {
                 poprzedni->next = mUsuwania->next;
-                tmp = mUsuwania;
-                mUsuwania = mUsuwania->next;
-                delete tmp;
+                delete mUsuwania;
             }
           while(mUsuwania != NULL)
             {
