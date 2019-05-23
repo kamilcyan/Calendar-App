@@ -143,60 +143,26 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
 
 Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
 {
-    Rosliny *kursor = glowa;
-    Rosliny *poprzedni = nullptr;
-
-    Rosliny *tmp = nullptr;
-
-    while(kursor -> next != mUsuwania)
+    if(mUsuwania == glowa)
     {
-        kursor = kursor -> next;
+    glowa = glowa -> next;
+    }
+    else{
+        Rosliny *kursor = glowa;
 
-    while(mUsuwania != nullptr)
-    {
-        //Rosliny *aktualny = glowa;
-        if(mUsuwania->wiek > kursor->wiek && (kursor->id)%2==0)
+        while(kursor -> next != mUsuwania)
         {
-            if(mUsuwania==glowa)
-            {
-                tmp = glowa;
-                glowa = glowa->next;
-                delete tmp;
-            }
-
-            else
-            {
-                poprzedni->next = mUsuwania->next;
-                delete mUsuwania;
-            }
-          while(mUsuwania != NULL)
-            {
-                cout << "Nazwa:\t" << mUsuwania->nazwa << "\t" << "Wiek:\t" << mUsuwania->wiek << "\t" << "Cena:\t" << mUsuwania->cena << "\t" << mUsuwania->id << endl;
-                mUsuwania = mUsuwania->next;
-            }
+            kursor = kursor -> next;
         }
+        kursor -> next = mUsuwania -> next;
+        }
+    delete(mUsuwania);
 
-    }
-    }
+    Rysuj(glowa);
+
+    return glowa;
 }
 
 
-    /*Rosliny* nastepny = kursor->next;
-    int licznikStarszych = 0;
-
-    while(kursor != NULL)
-    {
-        if(kursor->wiek > kursor->next->wiek)
-        {
-            licznikStarszych++;
-            kursor = kursor->next;
-        }
-    }
-    if((kursor->wiek > nastepny->wiek)||licznikStarszych%2==0)
-    {
-
-    }
-
-}*/
 
 
