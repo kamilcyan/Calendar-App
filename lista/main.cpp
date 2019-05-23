@@ -28,6 +28,7 @@ int main()
     Dodaj(glowa);
     wybierzWyraz(glowa);
     wybierzUsuwanie(glowa);
+    Rysuj(glowa);
 
     return 0;
 }
@@ -147,7 +148,9 @@ if(mUsuwania -> wiek > wiekPoprzedniego )
 {
     if(counter% 2 == 0)
     {
-        Usun(mUsuwania, glowa);
+        Rosliny *tmp = mUsuwania;
+        mUsuwania = mUsuwania -> next;
+        Usun(tmp, glowa);
     }
     else
     {
@@ -163,9 +166,9 @@ else
 }
 
 
-Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
+Rosliny* Usun(Rosliny *&tmp, Rosliny *&glowa)
 {
-    if(mUsuwania == glowa)
+    if(tmp == glowa)
     {
         glowa = glowa -> next;
     }
@@ -173,15 +176,15 @@ Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa)
     {
         Rosliny *kursor = glowa;
 
-        while(kursor -> next != mUsuwania)
+        while(kursor -> next != tmp)
         {
             kursor = kursor -> next;
         }
-        kursor -> next = mUsuwania -> next;
+        kursor -> next = tmp -> next;
     }
-    delete(mUsuwania);
-
-    Rysuj(glowa);
+    delete(tmp);
 
     return glowa;
 }
+
+
