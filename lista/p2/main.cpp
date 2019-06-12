@@ -19,23 +19,33 @@ int main() {
 	Rosliny *glowa;
 	glowa=NULL;
 
+	cout << "Etap 1" << endl;
 	WczytajListe(glowa);
+	cout << "Etap 2" << endl;
 	WydrukujListe(glowa);
-	UsunListe(glowa);
-	cout << endl << "Ponownie drukuje liste: " << endl;
+	//UsunListe(glowa);
+	//cout << endl << "Ponownie drukuje liste: " << endl;
 //	WydrukujListe(glowa);
 
 
 return 0;
 }
 
-void WczytajListe(Rosliny *&glowa) {
-	fstream dane;
-	dane.open("p2.txt",ios::in);
+void WczytajListe(Rosliny *&glowa)
+{
+	ifstream dane;
+	dane.open("p2.txt");
 	if(dane.good()==false)
-		cout << "Plik nie istnieje.";
-	Rosliny *p;
-	while(!dane.eof()) {
+    {
+        cout << "Plik nie istnieje.";
+    }
+    if(dane.good())
+    {
+        cout << "tak" << endl;
+    }
+	Rosliny *p = nullptr;
+	while(!dane.eof())
+    {
 		p = new Rosliny;
 		string a;
 		int b;
@@ -44,16 +54,27 @@ void WczytajListe(Rosliny *&glowa) {
 		p->gatunek = a;
 		p->cena = b;
 		p->wiek = c;
-		if(glowa==0)
-			glowa = p;
-		else {
-			Rosliny *temp = glowa;
-			while(temp->_wsk) {
+		p->_wsk = nullptr;
+
+		Rosliny *temp = glowa;
+
+		if(glowa==nullptr)
+        {
+            glowa = p;
+            return;
+        }
+
+		else
+        {
+            WydrukujListe(glowa);
+			while(temp->_wsk)
+            {
 				temp = temp->_wsk;
 			}
             temp->_wsk = p;
-            p->_wsk = 0;
+            return;
         }
+
 
 	}
 
@@ -62,7 +83,7 @@ void WczytajListe(Rosliny *&glowa) {
 
 void WydrukujListe(Rosliny *glowa)
 {
-    cout << "LISTA (gatunek, cena, wiek): " << endl;
+    cout << "Rosliny (gatunek, cena, wiek): " << endl;
 	Rosliny *p;
     p = glowa;
     while(p) {
