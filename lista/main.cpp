@@ -5,20 +5,22 @@ using namespace std;
 class Rosliny
 {
     public:
-    string nazwa;
+    string gatunek;
     int wiek;
     double cena;
     Rosliny *next;
 };
 
-Rosliny* dodajWiele(Rosliny *&glowa);
-Rosliny* Dodaj(Rosliny *&glowa);
-Rosliny* wybierzWyraz(Rosliny *&glowa);
-Rosliny* Rysuj(Rosliny *&glowa);
-Rosliny* wybierzUsuwanie(Rosliny *&glowa);
-Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa);
-Rosliny* znajdzNajmniejsza(Rosliny *&glowa);
-Rosliny* wstaw(Rosliny *&glowa);
+Rosliny* dodajWiele(Rosliny *&glowa);                   //wybiera ile wyrazow dodac
+Rosliny* Dodaj(Rosliny *&glowa);                          //dodaje kolejne wyrazy
+Rosliny* wybierzWyraz(Rosliny *&glowa);                    //wybiera miejsce drukowania
+Rosliny* Rysuj(Rosliny *&glowa);                            //drukuje liste
+Rosliny* wybierzUsuwanie(Rosliny *&glowa);                     //wybiera miejsce od ktorego ma zaczac usuwac
+Rosliny* Usun(Rosliny *&mUsuwania, Rosliny *&glowa);            //usuwa dane wyrazy
+Rosliny* znajdzNajmlodsza(Rosliny *&glowa);                       //znajduje najmlodsza rosline
+Rosliny* wstaw(Rosliny *&glowa);                                  //wstawia wyraz na wybrane miejsce
+Rosliny* usunListe(Rosliny *&glowa);                            //wybiera miejsce od ktorego nalezy zaczac usuwac liste
+Rosliny* deleteTu(Rosliny *&glowa);                            //rozpoczyna usuwanie w wybranym miejscu
 
 int main()
 {
@@ -29,7 +31,8 @@ int main()
     wybierzWyraz(glowa);
     wybierzUsuwanie(glowa);
     Rysuj(glowa);
-    znajdzNajmniejsza(glowa);
+    znajdzNajmlodsza(glowa);
+    usunListe(glowa);
 
     return 0;
 }
@@ -55,11 +58,11 @@ Rosliny* Dodaj(Rosliny *&glowa)
 
 
     aktualny = new Rosliny();
-    string nazwa;
+    string gatunek;
     int wiek;
     double cena;
-    cout << "Podaj nazwe:" << endl;
-    cin >> nazwa;
+    cout << "Podaj gatunek:" << endl;
+    cin >> gatunek;
     cout << "Podaj wiek:" << endl;
     cin >> wiek;
     cout << "Podaj cene:" << endl;
@@ -67,7 +70,7 @@ Rosliny* Dodaj(Rosliny *&glowa)
 
 
 
-    aktualny->nazwa = nazwa;
+    aktualny->gatunek = gatunek;
     aktualny->cena = cena;
     aktualny->wiek = wiek;
     aktualny->next = NULL;
@@ -94,10 +97,10 @@ Rosliny* wybierzWyraz(Rosliny *&glowa)
     Rosliny *tu = glowa;
 
 
-    while(tu != NULL)
+    while(tu != nullptr)
     {
 
-        if(tu->nazwa == wyraz)
+        if(tu->gatunek == wyraz)
         {
             Rysuj(tu);
         }
@@ -112,7 +115,7 @@ Rosliny* Rysuj(Rosliny *&tu)
 
     while(kursor != NULL)
     {
-        cout << "Nazwa:\t" << kursor->nazwa << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" << endl;
+        cout << "Gatunek:\t" << kursor->gatunek << "\t" << "Wiek:\t" << kursor->wiek << "\t" << "Cena:\t" << kursor->cena << "\t" << endl;
         kursor = kursor->next;
     }
 
@@ -128,19 +131,18 @@ Rosliny* wybierzUsuwanie(Rosliny *&glowa)
     int wiekPoprzedniego = -1;
     while(mUsuwania != nullptr)
     {
-
-    if(mUsuwania-> next ->nazwa == tuUsuwania)
+        if(mUsuwania-> next ->gatunek == tuUsuwania)
+            {
+            wiekPoprzedniego = mUsuwania -> wiek;
+            }
+        else if (mUsuwania-> gatunek == tuUsuwania)
         {
-        wiekPoprzedniego = mUsuwania -> wiek;
+        break;
         }
-    else if (mUsuwania-> nazwa == tuUsuwania)
-    {
-    break;
-    }
-    else
-        {
-            mUsuwania = mUsuwania -> next;
-        }
+        else
+            {
+                mUsuwania = mUsuwania -> next;
+            }
     }
     while(mUsuwania != nullptr)
     {
@@ -183,12 +185,10 @@ Rosliny* Usun(Rosliny *&tmp, Rosliny *&glowa)
         kursor -> next = tmp -> next;
     }
 
-    delete(tmp);
-
     return glowa;
 }
 
-Rosliny* znajdzNajmniejsza(Rosliny *&glowa)
+Rosliny* znajdzNajmlodsza(Rosliny *&glowa)
 {
     Rosliny *kursor = glowa;
     int najmlodsza = 10000;
@@ -206,9 +206,10 @@ Rosliny* znajdzNajmniejsza(Rosliny *&glowa)
 
     while(glowa != nullptr)
     {
-        if(glowa->wiek = najmlodsza)
+        if(glowa->wiek == najmlodsza)
         {
             wstaw(glowa);
+            return 0;
         }
         glowa = glowa->next;
     }
@@ -216,37 +217,51 @@ Rosliny* znajdzNajmniejsza(Rosliny *&glowa)
 
 Rosliny* wstaw(Rosliny *&glowa)
 {
-    Rosliny *aktualny, *poprzedni;
-    poprzedni = glowa;
+    Rosliny *aktualny;
 
+    aktualny = new Rosliny;
 
+        string gatunek;
+        int wiek;
+        double cena;
+        cout << "Podaj gatunek:" << endl;
+        cin >> gatunek;
+        cout << "Podaj wiek:" << endl;
+        cin >> wiek;
+        cout << "Podaj cene:" << endl;
+        cin >> cena;
 
-    aktualny = new Rosliny();
-    string nazwa;
-    int wiek;
-    double cena;
-    cout << "Podaj nazwe:" << endl;
-    cin >> nazwa;
-    cout << "Podaj wiek:" << endl;
-    cin >> wiek;
-    cout << "Podaj cene:" << endl;
-    cin >> cena;
+        aktualny->gatunek = gatunek;
+        aktualny->cena = cena;
+        aktualny->wiek = wiek;
+        aktualny->next = glowa;
 
-    aktualny->nazwa = nazwa;
-    aktualny->cena = cena;
-    aktualny->wiek = wiek;
-    aktualny->next = NULL;
+    Rysuj(aktualny);
+}
 
-    if(poprzedni == NULL)
+Rosliny* usunListe(Rosliny *&glowa)
+{
+    string wyraz;
+    cout << "Podaj nazwe wyrazu od ktorego chcesz zaczac usuwac: " << endl;
+    cin >> wyraz;
+    Rosliny *tu = glowa;
+
+    if(tu->gatunek == wyraz)
     {
-        glowa = aktualny;
-        return glowa;
+        deleteTu(tu);
     }
+    tu = tu->next;
+}
 
-    while(poprzedni -> next != NULL)
+Rosliny* deleteTu(Rosliny *&glowa)
+{
+    Rosliny *tu;
+
+
+    while(glowa)
     {
-    poprzedni = poprzedni -> next;
-    poprzedni ->next = aktualny;
+        tu = glowa;
+        glowa = glowa->next;
+        delete tu;
     }
-    Rysuj(glowa);
 }
