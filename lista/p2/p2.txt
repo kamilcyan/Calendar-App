@@ -1,8 +1,0 @@
-Roza 10 3
-Kaktus 20 5
-Bukszpan 22 2
-Tuja 10 4
-Gorgonzola 22 5
-Geranium 35 2
-Wiciokrzew 44 7
-Groszek 2 1
