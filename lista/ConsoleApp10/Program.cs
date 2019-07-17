@@ -49,7 +49,10 @@ namespace ConsoleApp10
         private static void RemoveItem()
         {
             AppDbContext db = new AppDbContext();
-            Note note = db.Notes.Find(1);
+            Console.WriteLine("Which note you want to remove?\n");
+            int x;
+            int.TryParse(Console.ReadLine(), out x);
+            Note note = db.Notes.Find(x);
             db.Notes.Remove(note);
             db.SaveChanges();
             Console.WriteLine("Record removed succesfully");
@@ -59,8 +62,12 @@ namespace ConsoleApp10
         private static Note UptadeItem()
         {
             AppDbContext db = new AppDbContext();
-            Note note = db.Notes.Find(1);
-            note.Body = "Call to Ramesh";
+            Console.WriteLine("Which note you want to update?\n");
+            int x;
+            int.TryParse(Console.ReadLine(), out x);
+            Note note = db.Notes.Find(x);
+            Console.WriteLine("Write new note..\n");
+            note.Body = Console.ReadLine();
             db.Entry(note).State = EntityState.Modified;
             db.SaveChanges();
             Console.WriteLine("Record updated succesfully");
@@ -72,10 +79,12 @@ namespace ConsoleApp10
         {
             AppDbContext db = new AppDbContext();
             Note note = new Note();
-            int x = note.Id;
+            Console.WriteLine("Which note you want to find?\n");
+            int x;
+            int.TryParse(Console.ReadLine(), out x);
             note = db.Notes.Find(x);
             Console.WriteLine("Id : " + note.Id);
-            Console.WriteLine("Note : " + note.Body);
+            Console.WriteLine("Note : \n" + note.Body);
             Console.WriteLine("Record read succesfully");
             Menu();
             return note;
