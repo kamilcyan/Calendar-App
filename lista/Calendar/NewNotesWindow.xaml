@@ -7,18 +7,26 @@
         mc:Ignorable="d"
         Title="NewNotesWindow" Height="450" Width="300">
     <Grid>
-        <StackPanel Margin="10">
-            <TextBlock x:Name="DateShow" Margin="0,0,0,5"/>
-            <TextBox x:Name="InsertNote"
-                     Text="Write note here"
-                        
-                     Margin="0,0,0,5"/>
-            <Button x:Name="DoneButton" Margin="0,0,0,5"
-                    Content="Done"
-                    Click="DoneButton_Click"
-                    />
+        
+              <StackPanel Margin="10">
+
+                        <TextBlock x:Name="DateShow" Margin="0,0,0,5"
+                                   />
+                        <TextBox x:Name="InsertNote"
+                                 Text="Write note here" Margin="0,0,0,5"/>
+                        <Button x:Name="DoneButton" Margin="0,0,0,5"
+                                Content="Done"
+                                Click="DoneButton_Click"
+                                />
+                        <Button x:Name="CancelButton" Margin="0,0,0,5"
+                                Content="Cancel"
+                                Click="CancelButton_Click"
+                                />
+            <TextBlock x:Name="ShowNotes" Margin="0,0,0,5"
+                        />
 
         </StackPanel>
+               
 
     </Grid>
 </Window>

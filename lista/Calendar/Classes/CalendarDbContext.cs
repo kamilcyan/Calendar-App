@@ -11,4 +11,5 @@ namespace Calendar.Classes
     {
         public DbSet<Note> Notes { get; set; }
     }
+
 }

@@ -9,7 +9,7 @@ namespace Calendar.Classes
     public class Note
     {
         public int Id { get; set; }
-
+        public DateTime DateOfPosting { get; set; }
         public string Body { get; set; }
     }
 }

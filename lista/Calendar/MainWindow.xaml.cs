@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace Calendar
 {
@@ -20,22 +22,21 @@ namespace Calendar
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         public MainWindow()
         {
-
-            InitializeComponent();
-
-            
+            DataContext = this;
+            InitializeComponent(); 
         }
-
-        //private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e) { }
-        private void MonthlyCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e) { }
-        private void MonthlyCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e) { }
 
         private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
             NewNotesWindow newNotesWindow = new NewNotesWindow();
             newNotesWindow.Show();
         }
+        private void MonthlyCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e) { }
+        private void MonthlyCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e) { }
+
+        
     }
 }
