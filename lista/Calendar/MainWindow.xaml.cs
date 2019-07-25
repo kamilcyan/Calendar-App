@@ -26,8 +26,39 @@ namespace Calendar
         public MainWindow()
         {
             DataContext = this;
-            InitializeComponent(); 
+            InitializeComponent();
+            textBlockFormatting();
+            startButtonFormatting();
+
         }
+
+        private void startButtonFormatting()
+        {
+            Button startButton = new Button();
+            startButton.Name = "startButton";
+            startButton.Click += new RoutedEventHandler(StartButton_Click);
+            startButton.Content = "Start";
+            startButton.Height = 50;
+            startButton.Width = 100;
+            NewStackPanel.Children.Add(startButton);
+        }
+
+        private void textBlockFormatting()
+        {
+            TextBlock textBlock = new TextBlock();
+            textBlock.Text = "<Temporary>";
+            textBlock.FontSize = 20;
+            textBlock.Name = "newTextBlock";
+            textBlock.VerticalAlignment = VerticalAlignment.Center;
+            textBlock.HorizontalAlignment = HorizontalAlignment.Center;
+            textBlock.Height = 50;
+            textBlock.Width = 100;
+            NewStackPanel.Children.Add(textBlock);
+            NewStackPanel.RegisterName(textBlock.Name, textBlock);
+           
+        }
+
+       
 
         private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -37,6 +68,10 @@ namespace Calendar
         private void MonthlyCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e) { }
         private void MonthlyCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e) { }
 
-        
+        private void StartButton_Click(object sender, RoutedEventArgs e)
+        {
+            SingleDayWindow singleDayWindow = new SingleDayWindow();
+            singleDayWindow.Show();
+        }
     }
 }

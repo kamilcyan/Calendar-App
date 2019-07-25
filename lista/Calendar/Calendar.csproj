@@ -62,6 +62,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddNoteWindow.xaml.cs">
+      <DependentUpon>AddNoteWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907240321159_CalndarNoteDB.cs" />
+    <Compile Include="Migrations\201907240321159_CalndarNoteDB.Designer.cs">
+      <DependentUpon>201907240321159_CalndarNoteDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingleDayWindow.xaml.cs">
+      <DependentUpon>SingleDayWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddNoteWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,6 +91,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewNotesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SingleDayWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,6 +123,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201907200321167_InitialCreate.resx">
       <DependentUpon>201907200321167_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907240321159_CalndarNoteDB.resx">
+      <DependentUpon>201907240321159_CalndarNoteDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
