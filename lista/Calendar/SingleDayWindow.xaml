@@ -9,6 +9,15 @@
     <Grid>
         <StackPanel Margin="10"
                     Name="NewStackPanel">
+            <TextBlock Text="{Binding ElementName=DateTextBlock, Path=Text, Mode=OneWay}"
+                       Margin="{Binding ElementName=DateTextBlock, Path=Margin, Mode=OneWay}"
+                       FontSize="{Binding ElementName=DateTextBlock, Path=FontSize, Mode=OneWay}"/>
+            <TextBlock Text="{Binding ElementName=ListOfNotes, Path=Text, Mode=OneWay}"/>
+            <TextBlock Text="{Binding ElementName=ShowNotes, Path=Text, Mode=OneWay}"/>
+            <Button Content="{Binding ElementName=AddNoteButton, Path=Content, Mode=OneWay}"
+                    Click="AddNoteButton_Click"
+                    HorizontalAlignment="{Binding ElementName=AddNoteButton, Path=HorizontalAlignment, Mode=OneWay}"
+                    VerticalAlignment="{Binding ElementName=AddNoteButton, Path=VerticalAlignmen, Mode=OneWay}"/>
         </StackPanel>
     </Grid>
 </Window>

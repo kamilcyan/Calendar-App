@@ -36,7 +36,7 @@ namespace Calendar
             m.Bottom = 20;
             textBlock1.Margin = m;
             textBlock1.Text = DateTime.Now.Day.ToString();
-            NewStackPanel.Children.Add(textBlock1);
+            //NewStackPanel.Children.Add(textBlock1);
             NewStackPanel.RegisterName(textBlock1.Name, textBlock1);
 
             TextBlock textBlock2 = new TextBlock();
@@ -45,20 +45,22 @@ namespace Calendar
             Thickness n = textBlock2.Margin;
             n.Bottom = 20;
             textBlock2.Margin = n;
-            NewStackPanel.Children.Add(textBlock2);
+            //NewStackPanel.Children.Add(textBlock2);
             NewStackPanel.RegisterName(textBlock2.Name, textBlock2);
 
             TextBlock textBlock3 = new TextBlock();
             textBlock3.Name = "ShowNotes";
             CalendarDbContext db = new CalendarDbContext();
+
             Note note = new Note();
-            for (int i=0; i<note.Id; i ++)
+            for (int i = 3; i <note.Id; i++)
             {
-                note.Id = i;
                 note = db.Notes.Find(i);
-                textBlock3.Text = note.Body;
+                
             }
-            NewStackPanel.Children.Add(textBlock3);
+            textBlock3.Text = note.Body;
+
+            //NewStackPanel.Children.Add(textBlock3);
             NewStackPanel.RegisterName(textBlock3.Name, textBlock3);
 
 
@@ -70,7 +72,8 @@ namespace Calendar
             button1.Height = 50;
             button1.Width = 70;
             button1.Click += new RoutedEventHandler(AddNoteButton_Click);
-            NewStackPanel.Children.Add(button1);
+            //NewStackPanel.Children.Add(button1);
+            NewStackPanel.RegisterName(button1.Name, button1);
         }
 
         private void AddNoteButton_Click(object sender, RoutedEventArgs e)
