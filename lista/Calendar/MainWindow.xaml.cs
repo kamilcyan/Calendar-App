@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Calendar.Classes;
 
 namespace Calendar
 {
@@ -22,7 +23,7 @@ namespace Calendar
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         public MainWindow()
         {
             DataContext = this;
@@ -34,31 +35,43 @@ namespace Calendar
 
         private void startButtonFormatting()
         {
-            Button startButton = new Button();
-            startButton.Name = "startButton";
-            startButton.Click += new RoutedEventHandler(StartButton_Click);
-            startButton.Content = "Start";
-            startButton.Height = 50;
-            startButton.Width = 100;
-            NewStackPanel.Children.Add(startButton);
         }
 
         private void textBlockFormatting()
         {
-            TextBlock textBlock = new TextBlock();
-            textBlock.Text = "<Temporary>";
-            textBlock.FontSize = 20;
-            textBlock.Name = "newTextBlock";
-            textBlock.VerticalAlignment = VerticalAlignment.Center;
-            textBlock.HorizontalAlignment = HorizontalAlignment.Center;
-            textBlock.Height = 50;
-            textBlock.Width = 100;
-            NewStackPanel.Children.Add(textBlock);
-            NewStackPanel.RegisterName(textBlock.Name, textBlock);
-           
+            var counter = 1;
+            for (int i=0; i<5; i++)
+            {
+                for(int j=0; j<7; j++)
+                {
+                    List<Note> notes;
+                    var date = new DateTime(2019, 07, counter);
+                    if (DateTime.Now.Month == 2 && counter > 29) counter = 29;
+                    else
+                        if (counter < 31) counter = counter + 1;
+                    else counter = 30;
+                    
+                    using (CalendarDbContext context = new CalendarDbContext())
+                    {
+                        var tomorrow = date.AddDays(1);
+                        notes = context.Notes.Where(x => x.DateOfPosting > date && x.DateOfPosting < tomorrow).ToList();
+                    }
+                    SingleDayWindow singleDayWindow = new SingleDayWindow(notes, date);
+                    Grid.SetRow(singleDayWindow, i);
+                    Grid.SetColumn(singleDayWindow, j);
+                    NewStackPanel2.Children.Add(singleDayWindow);
+                }
+            }
+
+
         }
 
-       
+        private void firstDayOfMonth()
+        {
+            DateTime now = DateTime.Now;
+            DateTime firstDay = new DateTime(now.Year, now.Month, 1);
+            string dayOfFirstDay = firstDay.DayOfWeek.ToString("dddd");
+        }
 
         private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -70,8 +83,6 @@ namespace Calendar
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            SingleDayWindow singleDayWindow = new SingleDayWindow();
-            singleDayWindow.Show();
         }
     }
 }

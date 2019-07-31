@@ -69,6 +69,7 @@
     <Compile Include="Migrations\201907240321159_CalndarNoteDB.Designer.cs">
       <DependentUpon>201907240321159_CalndarNoteDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="SingleDayViewModel.cs" />
     <Compile Include="SingleDayWindow.xaml.cs">
       <DependentUpon>SingleDayWindow.xaml</DependentUpon>
     </Compile>
