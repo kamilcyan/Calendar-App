@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Calendar.Classes;
+using System.Globalization;
+
 
 namespace Calendar
 {
@@ -23,6 +25,12 @@ namespace Calendar
     /// </summary>
     public partial class MainWindow : Window
     {
+        static internal System.DateTime _DisplayStartDate = System.DateTime.Now.AddDays(-1 * (System.DateTime.Now.Day - 1));
+        static private int _DisplayMonth;
+        static private int _DisplayYear;
+        static private int dayOfFirstDay = _DisplayStartDate.Day;
+        static private System.Globalization.Calendar sysCal;
+
 
         public MainWindow()
         {
@@ -37,41 +45,54 @@ namespace Calendar
         {
         }
 
+        public DateTime DisplayStartDate
+        {
+            get { return _DisplayStartDate; }
+            set
+            {
+                _DisplayStartDate = value;
+                _DisplayMonth = _DisplayStartDate.Month;
+                _DisplayYear = _DisplayStartDate.Year;
+            }
+        }
+
+
+        static private int iDaysInMonth = sysCal.GetDaysInMonth(_DisplayStartDate.Year, _DisplayStartDate.Month);
+
         private void textBlockFormatting()
         {
-            var counter = 1;
+            int counter = 1;
             for (int i=0; i<5; i++)
             {
                 for(int j=0; j<7; j++)
                 {
-                    List<Note> notes;
-                    var date = new DateTime(2019, 07, counter);
-                    if (DateTime.Now.Month == 2 && counter > 29) counter = 29;
-                    else
-                        if (counter < 31) counter = counter + 1;
-                    else counter = 30;
+                    DateTime dt = new DateTime();
                     
+                    _DisplayMonth = _DisplayStartDate.Month;
+                    _DisplayYear = _DisplayStartDate.Year;
+
+                    List<Note> notes;
+                    var date = new DateTime(_DisplayYear, _DisplayMonth, counter);
+
                     using (CalendarDbContext context = new CalendarDbContext())
                     {
                         var tomorrow = date.AddDays(1);
                         notes = context.Notes.Where(x => x.DateOfPosting > date && x.DateOfPosting < tomorrow).ToList();
                     }
-                    SingleDayWindow singleDayWindow = new SingleDayWindow(notes, date);
-                    Grid.SetRow(singleDayWindow, i);
-                    Grid.SetColumn(singleDayWindow, j);
-                    NewStackPanel2.Children.Add(singleDayWindow);
+                    SingleDayPage singleDayPage = new SingleDayPage(notes, date);
+                    //SingleDayWindow singleDayWindow = new SingleDayWindow(notes, date);
+                    
+                    Grid.SetRow(singleDayPage, i);
+                    Grid.SetColumn(singleDayPage, j);
+                    NewStackPanel2.Children.Add(singleDayPage);
+                    dayOfFirstDay++;
+                    
                 }
             }
 
-
+            
         }
-
-        private void firstDayOfMonth()
-        {
-            DateTime now = DateTime.Now;
-            DateTime firstDay = new DateTime(now.Year, now.Month, 1);
-            string dayOfFirstDay = firstDay.DayOfWeek.ToString("dddd");
-        }
+        
 
         private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
         {

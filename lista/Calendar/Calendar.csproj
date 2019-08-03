@@ -69,6 +69,9 @@
     <Compile Include="Migrations\201907240321159_CalndarNoteDB.Designer.cs">
       <DependentUpon>201907240321159_CalndarNoteDB.cs</DependentUpon>
     </Compile>
+    <Compile Include="SingleDayPage.xaml.cs">
+      <DependentUpon>SingleDayPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SingleDayViewModel.cs" />
     <Compile Include="SingleDayWindow.xaml.cs">
       <DependentUpon>SingleDayWindow.xaml</DependentUpon>
@@ -92,6 +95,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewNotesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SingleDayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local ="clr-namespace:Calendar"
-        mc:Ignorable="d"
+             mc:Ignorable="d"
          Height="400" Width="150">
     <Grid >
         <Rectangle Fill="{Binding BackgroundColor}"/>
@@ -13,10 +12,10 @@
             <Label Content="{Binding DateDayNumber}"/>
             <TextBlock Text="{Binding DateDay, Mode=OneWay}" />
             <TextBlock Text="{Binding Notes, Mode=OneWay}"/>
-            <Button Content="Dodaj"
+            <!--<Button Content="Dodaj"
                     Click="AddNoteButton_Click"
                     HorizontalAlignment="{Binding ElementName=AddNoteButton, Path=HorizontalAlignment, Mode=OneWay}"
-                    VerticalAlignment="{Binding ElementName=AddNoteButton, Path=VerticalAlignmen, Mode=OneWay}"/>
+                    VerticalAlignment="{Binding ElementName=AddNoteButton, Path=VerticalAlignmen, Mode=OneWay}"/>-->
         </StackPanel>
     </Grid>
 </TabControl>
