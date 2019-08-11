@@ -23,6 +23,13 @@ namespace Calendar
             AddNoteWindowFormatting();
         }
 
+        DateTime _date;
+
+        public AddNoteWindow(DateTime date) : this()
+        {
+            _date = date;
+        }
+
         private void AddNoteWindowFormatting()
         {
             StackPanel stackPanel = new StackPanel();
@@ -45,7 +52,7 @@ namespace Calendar
         {
             using (CalendarDbContext db = new CalendarDbContext())
             {
-                db.Notes.Add(new Note() { Body = NewNote.Text, DateOfPosting = DateTime.Now });
+                db.Notes.Add(new Note() { Body = NewNote.Text, DateOfPosting = _date });
                 db.SaveChanges();
                 this.Close();
             }

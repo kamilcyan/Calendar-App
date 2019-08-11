@@ -54,7 +54,6 @@ namespace Calendar
 
         private void textBlockFormatting()
         {
-            //int counter = 1;
             _DisplayMonth = _DisplayStartDate.Month;
             _DisplayYear = _DisplayStartDate.Year;
             sysCal = _cultureInfo.Calendar;
@@ -86,7 +85,7 @@ namespace Calendar
                     using (CalendarDbContext context = new CalendarDbContext())
                     {
                         var tomorrow = date.AddDays(1);
-                        notes = context.Notes.Where(x => x.DateOfPosting > date && x.DateOfPosting < tomorrow).ToList();
+                        notes = context.Notes.Where(x => x.DateOfPosting >= date && x.DateOfPosting < tomorrow).ToList();
                     }
                     SingleDayPage singleDayPage = new SingleDayPage(notes, date);
 
@@ -109,7 +108,7 @@ namespace Calendar
                     using (CalendarDbContext context = new CalendarDbContext())
                     {
                         var tomorrow = date.AddDays(1);
-                        notes = context.Notes.Where(x => x.DateOfPosting > date && x.DateOfPosting < tomorrow).ToList();
+                        notes = context.Notes.Where(x => x.DateOfPosting >= date && x.DateOfPosting < tomorrow).ToList();
                     }
                     SingleDayPage singleDayPage = new SingleDayPage(notes, date);
 

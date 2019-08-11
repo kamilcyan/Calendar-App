@@ -21,8 +21,11 @@ namespace Calendar
     /// </summary>
     public partial class SingleDayPage : UserControl
     {
+        DateTime _date;
+
         public SingleDayPage(List<Note> notes, DateTime date)
         {
+            _date = date;
             var viewModel = new SingleDayViewModel(notes, date);
             DataContext = viewModel;
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace Calendar
         
         private void AddNoteButton_Click(object sender, RoutedEventArgs e)
         {
-            AddNoteWindow addNoteWindow = new AddNoteWindow();
+            AddNoteWindow addNoteWindow = new AddNoteWindow(_date);
             addNoteWindow.ShowDialog();
         }
     }
