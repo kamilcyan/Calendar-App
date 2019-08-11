@@ -6,12 +6,41 @@
         xmlns:local="clr-namespace:Calendar"
         mc:Ignorable="d"
         Title="AddNoteWindow" Height="300" Width="300">
-    <Grid>
-        <StackPanel x:Name="NewStackPanel"
-                    Margin="10">
-            <TextBox x:Name="NewNote"
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition MaxHeight="50px"/>
+
+        </Grid.RowDefinitions>
+        <StackPanel Grid.ColumnSpan="2" HorizontalAlignment="Stretch" >
+            <Label Content="Content" HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="NewNote"
                      Text="Write Your note here"
                      Margin="0,0,0,10"/>
         </StackPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" >
+            <Label Content="Hour" HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Hour"
+                     Margin="0,0,0,10"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" >
+            <Label Content="Minute" HorizontalAlignment="Center"/>
+            <TextBox 
+                x:Name="Minute"
+                     Margin="0,0,0,10"/>
+        </StackPanel>
+        <Button Grid.Row="2" Grid.Column="0"
+            Content="Save"
+                            Click="SaveButton_Click"/>
+        <Button Grid.Row="2" Grid.Column="1"
+            Content="Delete"
+                            Click="DeleteButton_Click"/>
     </Grid>
 </Window>

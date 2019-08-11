@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace Calendar.Classes
+namespace Calendar.DataAccess
 {
     class CalendarDbContext : DbContext
     {

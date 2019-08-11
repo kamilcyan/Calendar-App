@@ -1,19 +1,20 @@
 namespace Calendar.Migrations
 {
+    using Calendar.DataAccess;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Calendar.Classes.CalendarDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<CalendarDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Calendar.Classes.CalendarDbContext";
+            ContextKey = "Calendar.DataAccess.CalendarDbContext";
         }
 
-        protected override void Seed(Calendar.Classes.CalendarDbContext context)
+        protected override void Seed(CalendarDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

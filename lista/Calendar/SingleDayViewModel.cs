@@ -1,10 +1,6 @@
-﻿using System;
+﻿using Calendar.DataAccess;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
-using Calendar.Classes;
 
 namespace Calendar
 {
@@ -20,12 +16,13 @@ namespace Calendar
 
         public List<Note> NotesForDay { get; }
 
-        public string Notes => string.Join("\r\n", NotesForDay.Select(x => x.Body));
+        public List<Note> Notes => NotesForDay;
 
         public SingleDayViewModel(List<Note> notesForDay, DateTime date)
         {
             NotesForDay = notesForDay;
             this.date = date;
         }
+
     }
 }

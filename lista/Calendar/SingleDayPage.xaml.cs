@@ -1,18 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Calendar.Classes;
+using Calendar.DataAccess;
 
 namespace Calendar
 {
@@ -21,21 +12,40 @@ namespace Calendar
     /// </summary>
     public partial class SingleDayPage : UserControl
     {
+        NotesDataAccess dataAccess = new NotesDataAccess();
         DateTime _date;
-
-        public SingleDayPage(List<Note> notes, DateTime date)
+        public SingleDayPage(DateTime date)
         {
+
             _date = date;
-            var viewModel = new SingleDayViewModel(notes, date);
-            DataContext = viewModel;
             InitializeComponent();
+
+            Update();
+
         }
 
-        
+        public void Update()
+        {
+            List<Note> notes = dataAccess.GetNotesForDay(_date);
+
+            var viewModel = new SingleDayViewModel(notes, _date);
+            tStack.DataContext = viewModel;
+            DataContext = viewModel;
+        }
+
         private void AddNoteButton_Click(object sender, RoutedEventArgs e)
         {
             AddNoteWindow addNoteWindow = new AddNoteWindow(_date);
             addNoteWindow.ShowDialog();
+            Update();
         }
+        private void xx(object sender, RoutedEventArgs e)
+        {
+            AddNoteWindow addNoteWindow = new AddNoteWindow(((dynamic)sender).DataContext as Note);
+            addNoteWindow.ShowDialog();
+            Update();
+        }
+
+       
     }
 }

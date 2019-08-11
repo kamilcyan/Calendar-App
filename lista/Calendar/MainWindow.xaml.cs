@@ -1,20 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Calendar.Classes;
 using System.Globalization;
 
 
@@ -32,7 +19,7 @@ namespace Calendar
         static private int dayOfFirstDay = _DisplayStartDate.Day;
         static private CultureInfo _cultureInfo = new CultureInfo(CultureInfo.CurrentUICulture.LCID);
         static private System.Globalization.Calendar sysCal;
-        
+
 
         public MainWindow()
         {
@@ -50,7 +37,7 @@ namespace Calendar
         private void startButtonFormatting()
         {
         }
-        
+
 
         private void textBlockFormatting()
         {
@@ -79,15 +66,8 @@ namespace Calendar
 
                 for (int j = fDay - 1; j < 7; j++)
                 {
-                    List<Note> notes;
                     var date = new DateTime(_DisplayYear, _DisplayMonth, dayOfFirstDay);
-
-                    using (CalendarDbContext context = new CalendarDbContext())
-                    {
-                        var tomorrow = date.AddDays(1);
-                        notes = context.Notes.Where(x => x.DateOfPosting >= date && x.DateOfPosting < tomorrow).ToList();
-                    }
-                    SingleDayPage singleDayPage = new SingleDayPage(notes, date);
+                    SingleDayPage singleDayPage = new SingleDayPage(date);
 
                     Grid.SetRow(singleDayPage, 0);
                     Grid.SetColumn(singleDayPage, j);
@@ -97,20 +77,11 @@ namespace Calendar
             }
             for (int i = 1; i < 5; i++)
             {
-
-
-
                 for (int j = 0; j < 7; j++)
                 {
-                    List<Note> notes;
                     var date = new DateTime(_DisplayYear, _DisplayMonth, dayOfFirstDay);
 
-                    using (CalendarDbContext context = new CalendarDbContext())
-                    {
-                        var tomorrow = date.AddDays(1);
-                        notes = context.Notes.Where(x => x.DateOfPosting >= date && x.DateOfPosting < tomorrow).ToList();
-                    }
-                    SingleDayPage singleDayPage = new SingleDayPage(notes, date);
+                    SingleDayPage singleDayPage = new SingleDayPage(date);
 
                     Grid.SetRow(singleDayPage, i);
                     Grid.SetColumn(singleDayPage, j);
@@ -122,9 +93,9 @@ namespace Calendar
                     dayOfFirstDay++;
                 }
             }
-            
 
-            
+
+
         }
 
         private static int FirstDayOfTheMonth()
@@ -133,12 +104,6 @@ namespace Calendar
             return iOffsetDays;
         }
 
-
-        private void MonthlyCalendar_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
-        {
-            NewNotesWindow newNotesWindow = new NewNotesWindow();
-            newNotesWindow.Show();
-        }
         private void MonthlyCalendar_DisplayDateChanged(object sender, CalendarDateChangedEventArgs e) { }
         private void MonthlyCalendar_DisplayModeChanged(object sender, CalendarModeChangedEventArgs e) { }
 

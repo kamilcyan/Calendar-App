@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp10", "..\ConsoleA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonthCalendar", "..\..\QuickCalendarCS\MonthCalendar.csproj", "{9986B357-8752-4CF2-B646-EF335C63013D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calendar.DataAccess", "Calendar.DataAccess\Calendar.DataAccess.csproj", "{6BC4AA9F-2E3B-4931-9D13-194F50BD5D4B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{9986B357-8752-4CF2-B646-EF335C63013D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9986B357-8752-4CF2-B646-EF335C63013D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9986B357-8752-4CF2-B646-EF335C63013D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BC4AA9F-2E3B-4931-9D13-194F50BD5D4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BC4AA9F-2E3B-4931-9D13-194F50BD5D4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BC4AA9F-2E3B-4931-9D13-194F50BD5D4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BC4AA9F-2E3B-4931-9D13-194F50BD5D4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

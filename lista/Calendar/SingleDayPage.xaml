@@ -9,7 +9,26 @@
         <Rectangle Fill="{Binding BackgroundColor}"/>
         <Label Content="{Binding DateDayNumber}"/>
         <TextBlock Text="{Binding DateDay, Mode=OneWay}" />
-        <TextBlock Text="{Binding Notes, Mode=OneWay}"/>
+
+        <ItemsControl x:Name="tStack" Grid.Column="0" ItemsSource="{Binding Notes}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Vertical"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Hour, Mode=OneWay}"
+                    MouseLeftButtonDown="xx"/>
+                        <TextBlock Text=" "/>
+                        <TextBlock Text="{Binding Body, Mode=OneWay}"
+                    MouseLeftButtonDown="xx"/>
+
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         <Button Content="Dodaj"
                     Click="AddNoteButton_Click"
                     HorizontalAlignment="{Binding ElementName=AddNoteButton, Path=HorizontalAlignment, Mode=OneWay}"
