@@ -17,13 +17,14 @@ namespace Calendar
         public SingleDayPage(DateTime date)
         {
 
-            _date = date;
+            _date = date.Date;
             InitializeComponent();
 
             Update();
 
         }
-
+        public SingleDayPage() :this(DateTime.Now)
+        { }
         public void Update()
         {
             List<Note> notes = dataAccess.GetNotesForDay(_date);

@@ -30,7 +30,8 @@ namespace Calendar.DataAccess
         {
             using (CalendarDbContext context = new CalendarDbContext())
             {
-                var tomorrow = date.AddDays(1);
+                var today = date.Date;
+                var tomorrow = today.AddDays(1);
                 return context.Notes.Where(x => x.DateOfPosting >= date && x.DateOfPosting < tomorrow).OrderBy(x => x.DateOfPosting).ToList();
             }
         }

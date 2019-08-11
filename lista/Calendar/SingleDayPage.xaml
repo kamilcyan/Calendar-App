@@ -3,8 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+              mc:Ignorable="d">
     <StackPanel x:Name="NewStackPanel" Background="{Binding BackgroundColor}" Margin="2,2,2,1">
         <Rectangle Fill="{Binding BackgroundColor}"/>
         <Label Content="{Binding DateDayNumber}"/>
@@ -21,7 +20,8 @@
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Hour, Mode=OneWay}"
                     MouseLeftButtonDown="xx"/>
-                        <TextBlock Text=" "/>
+                        <TextBlock Text=" "
+                    MouseLeftButtonDown="xx"/>
                         <TextBlock Text="{Binding Body, Mode=OneWay}"
                     MouseLeftButtonDown="xx"/>
 
