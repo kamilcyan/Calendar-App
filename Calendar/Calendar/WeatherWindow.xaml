@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="Calendar.WeatherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calendar"
+        mc:Ignorable="d"
+        Height="250" Width="250">
+    <Grid x:Name="WeatherWindowGrid" Margin="0,34,-0.302,0.113"
+          Background="Bisque">
+        <StackPanel >
+            <TextBlock Text="Weather now: " 
+                       FontSize="20"
+                       FontWeight="Bold"/>
+            <TextBlock Text="{Binding homeCity}"
+                       Margin="0 20 0 0"
+                       FontSize="20"
+                       FontWeight="Bold"/>
+            <TextBlock Text="{Binding temperature}"
+                       FontSize="40"
+                       FontWeight="ExtraBold"
+                       Margin="0 30 0 0 "/>
+            <TextBlock Text="{Binding clouds}"
+                       FontSize="15"
+                       FontWeight="DemiBold"/>
+            <TextBlock Text="{Binding windDirection}"
+                       FontSize="15"
+                       FontWeight="Bold"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

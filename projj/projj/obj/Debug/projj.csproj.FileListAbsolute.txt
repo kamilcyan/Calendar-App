@@ -1,7 +1,0 @@
-C:\Users\Kamil\source\repos\projj\projj\bin\Debug\projj.exe.config
-C:\Users\Kamil\source\repos\projj\projj\bin\Debug\projj.exe
-C:\Users\Kamil\source\repos\projj\projj\bin\Debug\projj.pdb
-C:\Users\Kamil\source\repos\projj\projj\obj\Debug\projj.csprojAssemblyReference.cache
-C:\Users\Kamil\source\repos\projj\projj\obj\Debug\projj.csproj.CoreCompileInputs.cache
-C:\Users\Kamil\source\repos\projj\projj\obj\Debug\projj.exe
-C:\Users\Kamil\source\repos\projj\projj\obj\Debug\projj.pdb
