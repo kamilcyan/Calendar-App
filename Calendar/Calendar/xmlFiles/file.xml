@@ -23,20 +23,20 @@ link to the specified URL.-->
   </links>
   <meta>
     <lastupdate>2020-02-17T18:35:31</lastupdate>
-    <nextupdate>2020-02-18T00:35:52</nextupdate>
+    <nextupdate>2020-02-18T00:35:28</nextupdate>
   </meta>
   <sun rise="2020-02-17T06:43:04" set="2020-02-17T16:49:46" />
   <forecast>
     <tabular>
-      <time from="2020-02-17T21:00:00" to="2020-02-18T00:00:00" period="3">
-        <!-- Valid from 2020-02-17T21:00:00 to 2020-02-18T00:00:00 -->
-        <symbol number="9" numberEx="46" name="Light rain" var="46" />
-        <precipitation value="0.2" />
-        <!-- Valid at 2020-02-17T21:00:00 -->
-        <windDirection deg="205.3" code="SSW" name="South-southwest" />
-        <windSpeed mps="1.7" name="Light breeze" />
+      <time from="2020-02-17T22:00:00" to="2020-02-18T00:00:00" period="3">
+        <!-- Valid from 2020-02-17T22:00:00 to 2020-02-18T00:00:00 -->
+        <symbol number="9" numberEx="9" name="Rain" var="09" />
+        <precipitation value="0.5" />
+        <!-- Valid at 2020-02-17T22:00:00 -->
+        <windDirection deg="202.1" code="SSW" name="South-southwest" />
+        <windSpeed mps="2.1" name="Light breeze" />
         <temperature unit="celsius" value="7" />
-        <pressure unit="hPa" value="1016.3" />
+        <pressure unit="hPa" value="1016.2" />
       </time>
       <time from="2020-02-18T00:00:00" to="2020-02-18T06:00:00" period="0">
         <!-- Valid from 2020-02-18T00:00:00 to 2020-02-18T06:00:00 -->

@@ -9,7 +9,7 @@ namespace Calendar
 
         private DateTime date;
         //public string BackgroundColor => isHoliday ? ( Active? "LightPink" : "IndianRed") : Active? "AliceBlue" : "SlateGray";
-        public string BackgroundColor => isHoliday ? (Active ? "LightPink" : "LightPink") : Active ? "AliceBlue" : "AliceBlue";
+        public string BackgroundColor => isHoliday ? (Active ? "LightPink" : "IndianRed") : Active ? "AliceBlue" : "SlateGray";
         public string DateDayNumber=> date.ToString("dd");
         public string DateDay => date.ToString("dddd");
         private bool isHoliday => (int)date.DayOfWeek == 0;
