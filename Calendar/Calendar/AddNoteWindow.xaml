@@ -22,7 +22,8 @@
             <TextBox 
                 x:Name="NewNote"
                      Text="Write Your note here"
-                     Margin="0,0,0,10"/>
+                     Margin="0,0,0,10" Height="80" AcceptsReturn="True"
+                VerticalScrollBarVisibility="Visible" />
         </StackPanel>
         <StackPanel Grid.Row="1" HorizontalAlignment="Stretch" >
             <Label Content="Hour" HorizontalAlignment="Center"/>
